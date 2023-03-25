@@ -1,4 +1,4 @@
-package com.geovannycode.Database
+package com.geovannycode.database
 
 import com.geovannycode.models.Course
 import com.geovannycode.models.Student

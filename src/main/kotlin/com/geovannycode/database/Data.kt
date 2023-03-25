@@ -1,4 +1,4 @@
-package com.geovannycode.Database
+package com.geovannycode.database
 
 import com.geovannycode.dto.UserDTORegister
 import com.geovannycode.models.Course

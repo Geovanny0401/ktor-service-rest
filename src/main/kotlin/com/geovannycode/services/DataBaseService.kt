@@ -1,8 +1,8 @@
 package com.geovannycode.services
 
-import com.geovannycode.Database.Database
-import com.geovannycode.Database.getCourses
-import com.geovannycode.Database.getStudents
+import com.geovannycode.database.Database
+import com.geovannycode.database.getCourses
+import com.geovannycode.database.getStudents
 import kotlinx.coroutines.runBlocking
 import org.koin.core.annotation.Single
 
