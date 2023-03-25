@@ -33,6 +33,10 @@ dependencies {
     implementation("io.insert-koin:koin-logger-slf4j:3.3.0")
     implementation("io.insert-koin:koin-annotations:1.1.0")
     implementation("com.ToxicBakery.library.bcrypt:bcrypt:1.0.9")
+    implementation("ch.qos.logback:logback-classic:1.4.5")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
+    implementation("io.github.smiley4:ktor-swagger-ui:1.5.0")
+    implementation("io.github.reactivecircus.cache4k:cache4k:0.9.0")
 
     ksp("io.insert-koin:koin-ksp-compiler:1.1.0")
 

@@ -8,6 +8,6 @@ data class Student(
     val lastName: String,
     val email: String,
     val age: Int,
-    val avatar: String?,
-    val courseId: UUID? = null,
+    var avatar: String?,
+    var courseId: UUID? = null,
 )
