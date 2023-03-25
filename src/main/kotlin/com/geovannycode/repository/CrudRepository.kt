@@ -1,4 +1,4 @@
-package com.geovannycode.repositories
+package com.geovannycode.repository
 
 import kotlinx.coroutines.flow.Flow
 

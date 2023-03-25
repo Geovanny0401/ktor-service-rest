@@ -32,6 +32,8 @@ dependencies {
     implementation("io.insert-koin:koin-ktor:3.3.0")
     implementation("io.insert-koin:koin-logger-slf4j:3.3.0")
     implementation("io.insert-koin:koin-annotations:1.1.0")
+    implementation("com.ToxicBakery.library.bcrypt:bcrypt:1.0.9")
+
     ksp("io.insert-koin:koin-ksp-compiler:1.1.0")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")

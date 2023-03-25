@@ -1,7 +1,9 @@
 package com.geovannycode.Database
 
+import com.geovannycode.dto.UserDTORegister
 import com.geovannycode.models.Course
 import com.geovannycode.models.Student
+import com.geovannycode.models.User
 import java.util.*
 
 fun getCourses() = listOf(
@@ -22,29 +24,29 @@ fun getStudents() = listOf(
         lastName = "Mendoza",
         email = "geovanny@gmail.com",
         age = 25,
-        avatar = "https://cdn-icons-png.flaticon.com/512/2550/2550260.png",
+        avatar = "https://picsum.photos/id/1/5000/3333",
         courseId = getCourses()[0].id,
     ),
     Student(
         id = UUID.fromString("df8da763-994b-4079-9bfe-b7c88c24faec"),
-        firstName = "Geovanny",
+        firstName = "Teddy",
         lastName = "Mendoza",
-        email = "geovanny@gmail.com",
+        email = "Teddy@gmail.com",
         age = 25,
-        avatar = "https://cdn-icons-png.flaticon.com/512/2550/2550260.png",
+        avatar = "https://picsum.photos/id/103/2592/1936",
         courseId = getCourses()[1].id,
     ),
     Student(
         id = UUID.fromString("f3324ddb-4d2d-4856-a5b2-edf1c7d15a7d"),
-        firstName = "Geovanny",
-        lastName = "Mendoza",
-        email = "geovanny@gmail.com",
+        firstName = "Valeria",
+        lastName = "Ahumada",
+        email = "valeria@gmail.com",
         age = 25,
-        avatar = "https://cdn-icons-png.flaticon.com/512/2550/2550260.png",
+        avatar = "https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png",
     ),
 )
 
-//fun getUsers() = listOf(
-    // UsuarioDTORegister("Geovanny10", "1234", User.Role.ADMIN.name),
-    // UsuarioDTORegister("Maria15", "1234", User.Role.USER.name),
-//)
+fun getUsers() = listOf(
+    UserDTORegister("Geovanny10", "1234", User.Role.ADMIN.name),
+    UserDTORegister("Maria15", "1234", User.Role.USER.name),
+)
