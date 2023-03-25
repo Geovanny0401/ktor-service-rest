@@ -20,6 +20,7 @@ application {
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -29,16 +30,16 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
-    implementation("io.insert-koin:koin-ktor:3.3.0")
-    implementation("io.insert-koin:koin-logger-slf4j:3.3.0")
-    implementation("io.insert-koin:koin-annotations:1.1.0")
+    implementation("io.insert-koin:koin-ktor:3.3.1")
+    implementation("io.insert-koin:koin-logger-slf4j:3.3.1")
+    implementation("io.insert-koin:koin-annotations:1.1.1")
     implementation("com.ToxicBakery.library.bcrypt:bcrypt:1.0.9")
-    implementation("ch.qos.logback:logback-classic:1.4.5")
-    implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
-    implementation("io.github.smiley4:ktor-swagger-ui:1.5.0")
+    implementation("ch.qos.logback:logback-classic:1.4.6")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+    implementation("io.github.smiley4:ktor-swagger-ui:1.0.2")
     implementation("io.github.reactivecircus.cache4k:cache4k:0.9.0")
 
-    ksp("io.insert-koin:koin-ksp-compiler:1.1.0")
+    ksp("io.insert-koin:koin-ksp-compiler:1.1.1")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

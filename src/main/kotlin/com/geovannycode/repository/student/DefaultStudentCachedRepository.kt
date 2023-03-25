@@ -45,17 +45,24 @@ class DefaultStudentCachedRepository(
         return repository.findAll()
     }
 
-    override suspend fun save(entity: Student): Student {
-        log.info { "Storing student in cache and database" }
+    override suspend fun findById(id: UUID): Student? {
+        log.info { "Searching for student in cache with id: $id" }
+        var exist = cache.cache.get(id)
+        if (exist == null) {
+            log.info { "Student not found in cache" }
+            exist = repository.findById(id)?.also { cache.cache.put(id, it) }
+        }
+        return exist
+    }
 
+    override suspend fun save(entity: Student): Student = withContext(Dispatchers.IO) {
+        log.info { "Storing student in cache and database" }
         launch {
             cache.cache.put(entity.id, entity)
         }
-
         launch {
             repository.save(entity)
         }
-
         return@withContext entity
     }
 }
