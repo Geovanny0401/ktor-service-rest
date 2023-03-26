@@ -3,13 +3,11 @@ package com.geovannycode.repostory.course
 import com.geovannycode.models.Course
 import com.geovannycode.repository.course.DefaultCourseCachedRepository
 import com.geovannycode.repository.course.DefaultCourseRepository
-import com.geovannycode.services.cache.CourseCache
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.SpyK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -27,9 +25,6 @@ class DefaultCourseCacheRepositoryTest {
 
     @MockK
     lateinit var repositoryCourse: DefaultCourseRepository
-
-    @SpyK
-    var cache = CourseCache()
 
     @InjectMockKs
     lateinit var repositoryCacheCourse: DefaultCourseCachedRepository
