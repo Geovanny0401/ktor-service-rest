@@ -65,4 +65,12 @@ class DefaultStudentCachedRepository(
         }
         return@withContext entity
     }
+
+    override suspend fun update(id: UUID, entity: Student): Student? {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun delete(entity: Student): Student? {
+        TODO("Not yet implemented")
+    }
 }

@@ -29,4 +29,12 @@ class DefaultStudentRepository(private val dataBaseService: DataBaseService) : S
         dataBaseService.getTables().tableStudents[entity.id] = entity
         return dataBaseService.getTables().tableStudents[entity.id]!!
     }
+
+    override suspend fun update(id: UUID, entity: Student): Student? {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun delete(entity: Student): Student? {
+        TODO("Not yet implemented")
+    }
 }

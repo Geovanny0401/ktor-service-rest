@@ -36,6 +36,31 @@ class DefaultCourseCachedRepository(
         return@withContext entity
     }
 
+    override suspend fun update(id: UUID, entity: Course): Course = withContext(Dispatchers.IO) {
+        log.info { "Updating department in cache and database" }
+        launch {
+            cache.cache.put(id, entity)
+        }
+        launch {
+            repository.update(id, entity)
+        }
+        return@withContext entity
+    }
+
+    override suspend fun delete(entity: Course): Course? = withContext(Dispatchers.IO)  {
+        log.info { "Deleting department in cache and database: $entity" }
+        val exist = findById(entity.id)
+        return@withContext exist?.let {
+            launch {
+                cache.cache.invalidate(entity.id)
+            }
+            launch {
+                repository.delete(entity)
+            }
+            return@let exist
+        }
+    }
+
     override suspend fun findById(id: UUID): Course? {
         log.info { "Searching for course in cache with id:: $id" }
 
