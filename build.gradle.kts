@@ -42,12 +42,15 @@ dependencies {
     ksp("io.insert-koin:koin-ksp-compiler:1.1.1")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     testImplementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     testImplementation("io.mockk:mockk:1.13.4")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 sourceSets.main {
