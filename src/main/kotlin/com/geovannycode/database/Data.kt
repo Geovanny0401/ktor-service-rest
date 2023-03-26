@@ -1,9 +1,7 @@
 package com.geovannycode.database
 
-import com.geovannycode.dto.UserDTORegister
 import com.geovannycode.models.Course
 import com.geovannycode.models.Student
-import com.geovannycode.models.User
 import java.util.*
 
 fun getCourses() = listOf(
@@ -46,7 +44,3 @@ fun getStudents() = listOf(
     ),
 )
 
-fun getUsers() = listOf(
-    UserDTORegister("Geovanny10", "1234", User.Role.ADMIN.name),
-    UserDTORegister("Maria15", "1234", User.Role.USER.name),
-)

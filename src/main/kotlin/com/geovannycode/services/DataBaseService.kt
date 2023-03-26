@@ -28,7 +28,6 @@ class DataBaseService(
 
     fun clearDataBaseService() {
         database.tableStudents.clear()
-        database.tableUsers.clear()
         database.tableCourses.clear()
     }
 }
