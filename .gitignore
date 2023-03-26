@@ -1,5 +1,8 @@
 # Compiled class file
 *.class
+gradle/wrapper
+gradlew.bat
+gradlew
 
 # Log file
 *.log
@@ -25,10 +28,10 @@ hs_err_pid*
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!.gradle/**
-gradlew/
 !**/src/main/**/target/
 !**/src/test/**/target/
+.gradle
+/build/
 
 ### STS ###
 .apt_generated
