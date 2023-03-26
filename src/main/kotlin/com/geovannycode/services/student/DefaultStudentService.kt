@@ -33,4 +33,26 @@ class DefaultStudentService(
         }
         return repository.save(student)
     }
+
+    override suspend fun update(id: UUID, student: Student): Student {
+        val exist = repository.findById(id)
+
+        exist?.let {
+            if (student.courseId != null) {
+                val existCourse = courseRepository.findById(student.courseId!!)
+                if (existCourse == null) {
+                    System.err.println("Course not found")
+                    student.courseId = exist.courseId
+                }
+            }
+            return repository.update(id, student)
+        } ?: throw Exception("Not found Student")
+    }
+
+    override suspend fun delete(student: Student): Student {
+        val exist = repository.findById(student.id)
+        exist?.let {
+            return repository.delete(student)!!
+        } ?: throw Exception("Not found Student")
+    }
 }

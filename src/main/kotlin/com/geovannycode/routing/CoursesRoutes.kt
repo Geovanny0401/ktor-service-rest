@@ -21,8 +21,6 @@ private const val END_POINT = "api/courses"
 fun Application.coursesRoutes() {
     val courseService: DefaultCourseService by inject()
 
-    // val usuarioService: DefaultUserService by inject()
-
     routing {
         route("/$END_POINT") {
             get({

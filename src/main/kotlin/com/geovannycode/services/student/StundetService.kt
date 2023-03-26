@@ -8,6 +8,6 @@ interface StundetService {
     suspend fun findAll(): Flow<Student>
     suspend fun findById(id: UUID): Student
     suspend fun save(student: Student): Student
-    //suspend fun update(id: UUID, student: Student): Student
-    //suspend fun delete(student: Student): Student
+    suspend fun update(id: UUID, student: Student): Student
+    suspend fun delete(student: Student): Student
 }

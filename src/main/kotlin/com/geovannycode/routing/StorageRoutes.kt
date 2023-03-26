@@ -21,18 +21,18 @@ fun Application.storageRoutes() {
                 description = "Get by name file"
                 request {
                     pathParameter<String>("name") {
-                        description = "Nombre del archivo a buscar"
+                        description = "Name file find"
                         required = true
                     }
                 }
                 response {
                     HttpStatusCode.OK to {
-                        description = "Nombre correcto"
-                        body<File> { description = "Ruta del archivo solicitado" }
+                        description = "Success"
+                        body<File> { description = "url file request" }
                     }
                     HttpStatusCode.NotFound to {
-                        description = "Archivo no localizado"
-                        body<String> { description = "Mensaje con la excepcion correspondiente" }
+                        description = "File not found"
+                        body<String> { description = "exception" }
                     }
                 }
             }) {
@@ -45,28 +45,24 @@ fun Application.storageRoutes() {
                     call.respond(HttpStatusCode.NotFound, e.message.toString())
                 }
             }
-            // Post file
+
             post({
                 description = "Post file"
-
                 response {
                     HttpStatusCode.OK to {
-                        description = "Archivo almacenado correctamente"
-                        body<File> { description = "Archivo almacenado " }
+                        description = "File save success"
+                        body<File> { description = "file success" }
                     }
                     HttpStatusCode.BadRequest to {
-                        description = "Error en la subida de archivo"
-                        body<String> { description = "Mensaje con la excepcion correspondiente" }
+                        description = "Error upload file"
+                        body<String> { description = "Exception" }
                     }
                 }
             }) {
                 try {
                     val readChannel = call.receiveChannel()
-
-                    // Damos nombre al archivo, y lo almacenamos con el metodo correspondiente
                     val fileName = UUID.randomUUID().toString() + ".png"
                     val res = storageService.saveFile(fileName, readChannel)
-
                     call.respond(HttpStatusCode.OK, res)
                 } catch (e: Exception) {
                     call.respond(HttpStatusCode.BadRequest, e.message.toString())
