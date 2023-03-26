@@ -32,7 +32,7 @@ class DefaultCourseRepository(private val dataBaseService: DataBaseService) :
         val course = findById(id) ?: return null
         val courseCopy = entity.copy(
             id = course.id,
-            name = entity.name
+            name = entity.name,
         )
         course.let {
             dataBaseService.getTables().tableCourses.replace(id, courseCopy)

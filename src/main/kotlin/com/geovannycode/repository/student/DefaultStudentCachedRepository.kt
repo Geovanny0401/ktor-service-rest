@@ -66,11 +66,28 @@ class DefaultStudentCachedRepository(
         return@withContext entity
     }
 
-    override suspend fun update(id: UUID, entity: Student): Student? {
-        TODO("Not yet implemented")
+    override suspend fun update(id: UUID, entity: Student): Student = withContext(Dispatchers.IO) {
+        log.info { "Updating student in cache and database" }
+        launch {
+            cache.cache.put(id, entity)
+        }
+        launch {
+            repository.update(id, entity)
+        }
+        return@withContext entity
     }
 
-    override suspend fun delete(entity: Student): Student? {
-        TODO("Not yet implemented")
+    override suspend fun delete(entity: Student): Student?= withContext(Dispatchers.IO) {
+        log.info { "Deleting student in cache and database: $entity" }
+        val exist = findById(entity.id)
+        return@withContext exist?.let {
+            launch {
+                cache.cache.invalidate(entity.id)
+            }
+            launch {
+                repository.delete(entity)
+            }
+            return@let exist
+        }
     }
 }

@@ -31,10 +31,26 @@ class DefaultStudentRepository(private val dataBaseService: DataBaseService) : S
     }
 
     override suspend fun update(id: UUID, entity: Student): Student? {
-        TODO("Not yet implemented")
+        log.info { "Update student with id: $id" }
+        val student = findById(id) ?: return null
+        val studentCopy = entity.copy(
+            id = student.id,
+            firstName = entity.firstName,
+            lastName = entity.lastName,
+            email = entity.email,
+            avatar = entity.avatar,
+            courseId = entity.courseId
+        )
+        student.let {
+            dataBaseService.getTables().tableStudents.replace(id, studentCopy)
+        }
+        return studentCopy
     }
 
     override suspend fun delete(entity: Student): Student? {
-        TODO("Not yet implemented")
+        log.info { "Deleting student with id: ${entity.id}" }
+        val student = findById(entity.id) ?: return null
+        dataBaseService.getTables().tableStudents.remove(student.id)
+        return student
     }
 }
